@@ -1,0 +1,126 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Tipos {
+  tipo_id  String     @id
+  cargo    String
+  Maestros Maestros[]
+  Alumno   Alumno[]
+  User     User[]
+}
+
+model Maestros {
+  id_maestro        String             @id
+  nombre            String
+  apellido          String
+  tipoId            String
+  registro_completo String             @default("0")
+  tipo_Tipos        Tipos              @relation(fields: [tipoId], references: [tipo_id])
+  Materia_Maestros  Materia_Maestros[]
+  Alu_Maestros      Alu_Maestros[]
+  Asistencia        Asistencia[]
+}
+
+model Carrera {
+  carrera_id    Int      @id
+  nombre_carre  String
+  duracion_anos Int
+  Alumno        Alumno[]
+}
+
+model Alumno {
+  mat_alu       String          @id
+  nom_alu       String
+  edad_alu      Int
+  semestre_alu  Int
+  carrera_id    Int
+  tipo          String
+  tipo_Tipos    Tipos           @relation(fields: [tipo], references: [tipo_id])
+  carrera       Carrera         @relation(fields: [carrera_id], references: [carrera_id])
+  Materi_Alumno Materi_Alumno[]
+  Alu_Maestros  Alu_Maestros[]
+  Asistencia    Asistencia[]
+}
+
+model User {
+  id         Int      @id @default(autoincrement())
+  email      String   @unique
+  username   String   @unique
+  password   String
+  createAt   DateTime @default(now())
+  updateAt   DateTime @updatedAt
+  tipo       String
+  tipo_Tipos Tipos    @relation(fields: [tipo], references: [tipo_id])
+  results    Result[]
+}
+
+model Materias {
+  id_Mate          Int                @id @default(autoincrement())
+  nombre           String
+  matricula        String
+  creditos         Int
+  Materi_Alumno    Materi_Alumno[]
+  Materia_Maestros Materia_Maestros[]
+  Asistencia       Asistencia[]
+}
+
+model Materia_Maestros {
+  id_maestro String
+  id_Mate    Int
+  dia        String
+  horaInicio DateTime
+  horaFin    DateTime
+  Maestros   Maestros @relation(fields: [id_maestro], references: [id_maestro])
+  Materias   Materias @relation(fields: [id_Mate], references: [id_Mate])
+
+  @@id([id_maestro, id_Mate, dia, horaInicio, horaFin])
+}
+
+model Materi_Alumno {
+  mat_alu  String
+  id_Mate  Int
+  Alumno   Alumno   @relation(fields: [mat_alu], references: [mat_alu])
+  Materias Materias @relation(fields: [id_Mate], references: [id_Mate])
+
+  @@id([mat_alu, id_Mate])
+}
+
+model Alu_Maestros {
+  mat_alu    String
+  id_maestro String
+  Alumno     Alumno   @relation(fields: [mat_alu], references: [mat_alu])
+  Maestros   Maestros @relation(fields: [id_maestro], references: [id_maestro])
+
+  @@id([mat_alu, id_maestro])
+}
+
+model Asistencia {
+  id         Int      @id @default(autoincrement())
+  qrCode     String
+  dia        DateTime
+  id_maestro String
+  materia_id Int
+  alumno_id  String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  Alumno   Alumno   @relation(fields: [alumno_id], references: [mat_alu])
+  Maestros Maestros @relation(fields: [id_maestro], references: [id_maestro])
+  Materias Materias @relation(fields: [materia_id], references: [id_Mate])
+}
+
+model Result {
+  id         Int      @id @default(autoincrement())
+  answer     String
+  isCorrect  String
+  procedure  String
+  userId     Int
+  user       User     @relation(fields: [userId], references: [id])
+  createdAt  DateTime @default(now())
+}

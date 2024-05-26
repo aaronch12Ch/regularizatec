@@ -1,0 +1,35 @@
+
+
+@font-face {
+    font-family: 'ttOctosquares';
+    src: url('../assets/fonts/ttO.ttf');
+}
+.nuevo{
+    font-family:'ttOctosquares','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+    font-style: italic;
+    font-size: 25px;
+    color: white;
+    padding: 10px;
+    border-bottom: 1px solid grey;
+
+    position: relative;
+}
+
+.nuevo:hover {
+    
+    
+    /* background-color: rgb(46, 165, 255); */
+    border-radius: 5px;
+    box-shadow: 6px 3px 5px white;
+    
+}
+.navCss{
+    background-color: rgb(53, 51, 52 ,0.8);
+}
+
+.imgT{
+    border-radius: 5px;
+}
+h2{
+    font-family:'ttOctosquares','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+}

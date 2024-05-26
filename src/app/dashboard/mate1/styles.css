@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'ttOctosquares';
+    src: url('../../../assets/fonts/ttO.ttf');
+}
+.tituloNaruto{
+    font-size: 40px;
+    font-family:'ttOctosquares','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+    font-style: italic;
+    color: white;
+}

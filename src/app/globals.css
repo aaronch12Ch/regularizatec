@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    background-color: rgb(86, 179, 255);
+    /* background-image:url('https://proyectotopicos22.000webhostapp.com/imgfru.jpg'); */
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    
+}
+@font-face {
+    font-family: 'ttOctosquares';
+    src: url('../assets/fonts/ttO.ttf');
+}
+.nuevo2{
+    font-family:'ttOctosquares','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+    font-style: italic;
+    color: white;
+    text-shadow: 20px 20px 50px   rgb(22, 17, 23) ;
+    margin-left: 180px;
+    
+}
+.ppod{
+    font-family:'ttOctosquares','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+    text-shadow: 20px 20px 50px   rgb(195, 195, 195) ;
+}

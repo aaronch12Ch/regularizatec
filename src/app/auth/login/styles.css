@@ -1,0 +1,17 @@
+.transP{
+    background-color: rgb(255, 255, 255);
+    border-radius: 25px;
+    padding: 2%;
+}
+.colorButon{
+    
+    cursor: pointer;
+    color: #ffffff;
+    transition: background-color 0.3s, color 0.3s;
+    border: 3px solid #ffffff;
+    border-radius: 10px;
+}
+h1,label,button{
+    font-family:'ttOctosquares','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+
+}
